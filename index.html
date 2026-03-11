@@ -4,108 +4,241 @@
 <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Untuk Kamu ✨</title>
+      <title>CONGRATULATIONS! 🎮</title>
       <link rel="stylesheet" href="style.css">
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
-            rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
       <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 
-<body>
+<body class="retro-theme">
 
       <audio id="bgMusic" loop>
-            <source src="lagu-romantis.mp3" type="audio/mpeg">
+            <source src="everysummertime.mp3" type="audio/mpeg">
       </audio>
 
-      <div class="background-elements">
-            <div class="gradient-sphere"></div>
-            <div class="gradient-sphere secondary"></div>
+      <div class="pixel-background">
+            <div id="bg-character" class="pixel-character"></div>
+            <div class="scanlines"></div>
       </div>
 
-      <main class="container">
-            <section id="hero" class="reveal">
-                  <h1 class="hero-title">Ada sesuatu yang ingin<br>aku sampaikan...</h1>
-                  <p class="hero-subtitle">Scroll pelan-pelan ya ✨</p>
-                  <button id="startBtn" class="btn-primary">Mulai Cerita 🎁</button>
-            </section>
+      <main class="game-container">
+            <!-- Loading Screen -->
+            <section id="loading-screen" class="screen-item">
+                  <div class="pixel-box">
+                        <h2 class="blink" style="color: #ff00d4; text-shadow: 2px 2px #000;">LOADING YA GENDUD CUU...
+                        </h2>
 
-            <section id="birthday-wish" class="reveal">
-                  <div class="glass-card">
-                        <h2 class="wish-title">Happy Birthday,<br><span class="highlight">Sania</span></h2>
-                        <div class="message-content">
-                              <p id="main-message">Selamat ulang tahun ya! Terima kasih sudah jadi orang yang luar biasa
-                                    bagi aku.</p>
+                        <div class="loading-bar-container">
+                              <div id="loading-bar" class="loading-bar"></div>
+                        </div>
+                        <p id="loading-percentage" style="color: rgba(185, 0, 167, 0.594); margin-top: 5px;">0%</p>
+
+                        <div class="announcement-box">
+                              <p style="color: var(--pink-light); font-size: 0.8rem; margin-bottom: 10px;">> GAME HINT
+                                    MUNCUL DI SINI << /p>
+                                          <p id="loading-text" class="loading-hint">Mempersiapkan dunia untuk player
+                                                yang paling cantik...</p>
                         </div>
                   </div>
             </section>
 
-            <section id="memories" class="reveal">
-                  <h3 class="section-label">Kenangan Kita</h3>
-                  <div class="slideshow-wrapper">
-                        <img src="foto1.jpg" class="slide active" alt="Kenangan 1">
-                        <img src="foto2.jpg" class="slide" alt="Kenangan 2">
-                        <img src="foto3.jpg" class="slide" alt="Kenangan 3">
+            <!-- Start Screen -->
+            <section id="start-screen" class="screen-item active">
+                  <div class="pixel-box main-title">
+                        <h1 class="blink">PRESS START</h1>
+                        <p>UNTUK SANIA</p>
+                  </div>
+                  <button id="startBtn" class="retro-btn">AYO MULAI SAYANG 🎮</button>
+            </section>
+
+            <!-- Question Screen -->
+            <section id="question-screen" class="screen-item">
+                  <div class="pixel-box">
+                        <h2 class="blink" style="margin-bottom: 20px; font-size: 1.2rem;">SECURITY CHECK</h2>
+
+                        <div id="q1-container" class="question-container active">
+                              <p>1. Nama kamu siapa?</p>
+                              <input type="text" id="q1-input" class="retro-input" placeholder="Ketik disini...">
+                              <button id="q1-btn" class="retro-btn secondary mt-2">LANJUT</button>
+                        </div>
+
+                        <div id="q2-container" class="question-container">
+                              <p>2. Tanggal lahir kamu?</p>
+                              <input type="text" id="q2-input" class="retro-input" placeholder="Ketik disini...">
+                              <button id="q2-btn" class="retro-btn secondary mt-2">LANJUT</button>
+                        </div>
+
+                        <div id="q3-container" class="question-container">
+                              <p>3. Tanggal jadian kita?</p>
+                              <input type="text" id="q3-input" class="retro-input" placeholder="Ketik disini...">
+                              <button id="q3-btn" class="retro-btn secondary mt-2">LANJUT</button>
+                        </div>
+
+                        <div id="q4-container" class="question-container">
+                              <p>4. Siapa yang paling kamu sayang?</p>
+                              <input type="text" id="q4-input" class="retro-input" placeholder="Ketik disini...">
+                              <button id="q4-btn" class="retro-btn secondary mt-2">LANJUT</button>
+                        </div>
+
+                        <div id="q5-container" class="question-container">
+                              <p>5. Apa yang kamu suka dari aku?</p>
+                              <input type="text" id="q5-input" class="retro-input" placeholder="Ketik disini...">
+                              <button id="q5-btn" class="retro-btn secondary mt-2">LANJUT</button>
+                        </div>
+                        <div id="q6-container" class="question-container">
+                              <p>6. Janji bakal terus sama aku?</p>
+                              <input type="text" id="q6-input" class="retro-input" placeholder="Ketik disini...">
+                              <button id="q6-btn" class="retro-btn mt-2">SUBMIT</button>
+                        </div>
                   </div>
             </section>
 
-            <section id="gallery" class="reveal">
-                  <h3 class="section-label">Galeri Kebahagiaan</h3>
-                  <div class="gallery-layout">
-                        <div class="gallery-card"
-                              onclick="openModal('foto4.jpg', 'Senyum yang selalu buat hari aku lebih cerah.')">
-                              <img src="foto4.jpg" alt="Memory 1">
+            <!-- Level Up Screen -->
+            <section id="level-up" class="screen-item">
+                  <div class="pixel-card">
+                        <div class="pixel-header">
+                              <span class="pixel-icon">❤</span>
+                              <h3>NEW LEVEL!</h3>
+                              <span class="pixel-icon">❤</span>
                         </div>
-                        <div class="gallery-card"
-                              onclick="openModal('foto5.jpg', 'Waktu itu, dunia terasa milik kita berdua.')">
-                              <img src="foto5.jpg" alt="Memory 2">
+                        <h2 class="congrats-text">HAPPY BIRTHDAY!</h2>
+                        <p class="subtitle">HOPE YOUR SPECIAL DAY IS AS INCREDIBLE AS YOU ARE!</p>
+
+                        <div class="character-area">
+                              <div class="pixel-heart-container">
+                                    <span class="pixel-heart large">❤</span>
+                              </div>
                         </div>
-                        <div class="gallery-card"
-                              onclick="openModal('foto6.jpg', 'Setiap detik bersamamu adalah hadiah.')">
-                              <img src="foto6.jpg" alt="Memory 3">
+
+                        <div class="stat-box">
+                              <p>PLAYER: SANIA GENDUD LUCU IMUT CANTIK GEMOY GEMASH</p>
+                              <p>STATUS: PACAR WISIK YANG GANTENG ❤</p>
+                              <p>REWARD: HAPPINESS ++</p>
                         </div>
-                        <div class="gallery-card"
-                              onclick="openModal('foto7.jpg', 'Terima kasih sudah memilih jalan ini bersamaku.')">
-                              <img src="foto7.jpg" alt="Memory 4">
+
+                        <div class="btn-group">
+                              <button id="backToStartBtn" class="retro-btn secondary">BACK</button>
+                              <button id="nextLevelBtn" class="retro-btn">CONTINUE</button>
                         </div>
                   </div>
             </section>
 
-            <section id="secret" class="reveal">
-                  <div class="glass-card">
-                        <h3 class="section-label">Pesan Dari Hatiku</h3>
-                        <p class="secret-hint">Ada satu hal kecil lagi...</p>
-                        <button id="viewSecretBtn" class="btn-outline">Buka Pesan Tersembunyi 💌</button>
+            <!-- Memory Gallery -->
+            <section id="gallery" class="screen-item">
+                  <h2 class="section-title">HAPPY BIRTHDAY!</h2>
+                  <div class="pixel-grid">
+                        <div class="gallery-card"
+                              onclick="openModal('sania7.jpg', 'Aku seneng banget liat senyum manismu. Walaupun capek, tapi bahagia banget bisa ngabisin waktu bareng kamu seharian. Makasih ya udah ngabisin waktu bareng mamas, semoga kedepannya kita bisa sering-sering kaya gini. 😊')">
+                              <img src="sania7.jpg" alt="Memory 1">
+                        </div>
+                        <div class="gallery-card"
+                              onclick="openModal('sania6.jpg', 'Banyak banget momen indah yang kita bikin. Aku harap kita bisa bikin lebih banyak momen indah kedepannya. Aku bersyukur banget bisa kenal sama kamu. ✨')">
+                              <img src="sania6.jpg" alt="Memory 2">
+                        </div>
+                        <div class="gallery-card"
+                              onclick="openModal('sania4.jpg', 'Gak nyangka kita udah sejauh ini, setelah banyak badai yang kita lalui. Doaku semoga kita bisa terus bareng, saling support, dan bahagia terus selamanya. Kamu orang paling spesial buat aku. ❤')">
+                              <img src="sania4.jpg" alt="Memory 3">
+                        </div>
+                        <div class="gallery-card"
+                              onclick="openModal('sania5.jpg', 'Terima kasih udah selalu ada buat aku, di saat seneng maupun susah. Dukunganmu bener-bener berharga banget buat aku. Semoga aku juga bisa selalu jadi alasan kamu tersenyum setiap harinya. I love you! 💖')">
+                              <img src="sania5.jpg" alt="Memory 4">
+                        </div>
+                  </div>
+                  <div class="btn-group">
+                        <button id="backToLevelBtn" class="retro-btn secondary">BACK</button>
+                        <button id="toCakeBtn" class="retro-btn">MAKE A WISH</button>
                   </div>
             </section>
 
-            <footer id="footer" class="reveal">
-                  <p class="footer-text">Selamat ulang tahun sekali lagi ✨</p>
-                  <p class="footer-subtext">I Love You so much.</p>
-            </footer>
+            <!-- Cake Screen -->
+            <section id="cake-screen" class="screen-item">
+                  <div class="pixel-box">
+                        <h2 class="blink" style="margin-bottom: 30px;">MAKE A WISH!</h2>
+
+                        <div class="cake-container">
+                              <div class="candle">
+                                    <div id="flame" class="flame" onclick="blowCandle()"></div>
+                                    <div id="smoke" class="smoke"></div>
+                              </div>
+                              <div class="cake-body">
+                                    <div class="cake-top"></div>
+                                    <div class="cake-bottom"></div>
+                              </div>
+                        </div>
+
+                        <p class="instruction-text mt-2">TAP FLAME TO BLOW! 🕯️</p>
+
+                        <div class="btn-group">
+                              <button id="backToGalleryBtn2" class="retro-btn secondary">BACK</button>
+                        </div>
+                  </div>
+            </section>
+
+            <!-- Secret Message -->
+            <section id="secret" class="screen-item">
+                  <div class="pixel-box">
+                        <div id="floating-hearts"></div>
+                        <h2 class="blink">SELAMAT MEMBACA SAYANG!</h2>
+                        <div class="secret-text">
+                              <p>Hayy gendudddd. Selamat ulang tahun sayangku. Aku harap diumur kamu yang ke-21 sekarang
+                                    kamu jadi jauh lebih dewasa ya cantik, semoga cita cita yang selama ini kamu impikan
+                                    dapat terwujud di tahun ini. Terima kasih sudah jadi perempuan yang
+                                    sabar, tabah, kuat, mandiri, mau berjuang intinya semuanya deh, aku bangga sama
+                                    kamu.</p>
+                              <p>Semoga dengan bertambahnya umurmu, kamu jadi makin bahagia, sehat selalu, makin cantik,
+                                    makin endud xixixi, makin sayang sama orang tua, adek adekmu, sama aku juga tentunya
+                                    yihiii. Tetap jadi perempuan yang mas kenal ya, kamu perempuan yang paling
+                                    sempurna yang pernah aku temui.Aku bahagia banget jalanin waktu waktu bareng kamu,
+                                    hari demi hari, bulan demi bulan, taun demi taun kita udah lewatin. Banyak banget
+                                    rintangan yang udah kita lewatin dud. Badai yang besar, petir yang terus menyambar,
+                                    api yang sering menyala, kita bisa lewati itu semua gendud. Jangan pernah takut
+                                    untuk selalu jalan maju ya dud, mamas ada dibelakang mu yang bakal selalu support
+                                    kamu, 100000% aku bakal support kamu selalu gendud. Gendud anak hebat yaaaa, bisa
+                                    berjuang sampe sekarang, mamas aja kagum sama kamu bisa bertahan sejauh ini dengan
+                                    banyak rintangan yang kamu lalui.</p>
+                              <p>Mas sayang sama kamu dud, bahkan lebih dari mas sayang sama diri mas sendiri. Kamu yang
+                                    masih mau nerima aku gimanapun kondisiku, tetep
+                                    selalu maafin aku sebesar apapun salahku, tetep mau bikin aku bahagai meskipun kamu
+                                    lagi sedih, mas bener bener makasih ke kamu.mamas ga bisa nutupin rasa nyeselnya
+                                    mamas waktu dulu mamas ninggalin kamu, tp mamas jg ga bisa nutupin rasa bahagia
+                                    mamas ketika mamas bisa sama kamu lagi.</p>
+                              <p>Jangan pernah khawatir soal aku ya, aku udah janji sama diriku sendiri aku gamau buat
+                                    ninggalin kamu lagi. Aku sudah berusaha untuk serius sama kamu, kamu yang uda
+                                    nemenin aku dari aku jatuh sampe aku bisa buat berdiri lagi. Aku gakan pergi dari
+                                    kamu sayang. Kita akan selamanya ya sayang, sampai kapanpun kita akan selalu bareng.
+                                    sampae taun 2981 atau lebih. HIHIIHIHIHIH</p>
+                              <p>Aku selalu berdoa, semoga lelahmu, usahamu, kerja kerasmu akan terbayar secepatnya,
+                                    apapun yang kamu
+                                    lakuin sekarang adalah awal dari sukses yang sudah kamu kejar sejauh ini, jaga
+                                    kesehatan ya, mamas masih mau liat kamu untuk hari esok, lusa, dan seterusnya</p>
+                              </p>
+                        </div>
+                        <div class="btn-group">
+                              <button id="backToGalleryBtn" class="retro-btn secondary">BACK</button>
+                              <div class="relationship-timer">
+                                    <p class="timer-title">OUR JOURNEY TOGETHER</p>
+                                    <div id="timer-display" class="timer-numbers">
+                                          0 Days, 0 Hours, 0 Minutes, 0 Seconds
+                                    </div>
+                              </div>
+                              <p class="game-over">I LOVE YOU! ✨❤️❤️❤️</p>
+                        </div>
+                  </div>
+            </section>
       </main>
 
       <!-- Modals -->
       <div id="imageModal" class="modal">
             <div class="modal-overlay" onclick="closeModal()"></div>
-            <div class="modal-container">
-                  <img id="modalImg" src="" alt="Zoomed">
+            <div class="pixel-box modal-content">
+                  <span class="close-btn" onclick="closeModal()">&times;</span>
+                  <img id="modalImg" src="">
                   <p id="modalCaption"></p>
             </div>
       </div>
 
-      <div id="secretModal" class="modal">
-            <div class="modal-overlay" onclick="closeSecret()"></div>
-            <div class="modal-container glass-card">
-                  <h2>Hanya Untukmu,</h2>
-                  <div class="scroll-text">
-                        <p>Di hari spesialmu ini, aku ingin kamu tahu betapa berartinya kehadiranmu dalam hidupku.
-                              Terima kasih buat semua tawa, dukungan, dan kasih sayang yang kamu kasih selama ini.</p>
-                        <p>Semoga di umur yang baru ini, kamu semakin bahagia, sehat selalu, dan semua impianmu
-                              tercapai. Aku akan selalu ada di sini buat dukung kamu.</p>
-                        <p>Selamat bertambah usia, sayang. ✨</p>
-                  </div>
-                  <button class="btn-primary" onclick="closeSecret()">Tutup 💖</button>
-            </div>
+      <div id="code-overlay" class="code-overlay">
+            <div id="code-text" class="code-text"></div>
       </div>
 
       <script src="script.js"></script>
