@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Kamu ✨</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="lagu-romantis.mp3" type="audio/mpeg">
+    </audio>
+
+    <section id="opening" class="screen active">
+        <h1 class="mysterious-text">Aku punya sesuatu untuk kamu...</h1>
+        <button id="openBtn" class="btn">Buka Hadiahnya 🎁</button>
+    </section>
+
+    <section id="main" class="screen">
+        <div class="balloons-container" id="balloons"></div>
+
+        <div class="content-wrapper">
+            <h1 class="bday-title">Happy Birthday,<br><span class="name">[Nama Pasangan/Spesial]</span></h1>
+            
+            <div class="message-box">
+                <p id="typewriter-text"></p>
+            </div>
+
+            <h2 class="section-title">Memori Kita berjalan...</h2>
+            <div class="slideshow-container">
+                <img src="foto1.jpg" class="slide active" alt="Kenangan 1">
+                <img src="foto2.jpg" class="slide" alt="Kenangan 2">
+                <img src="foto3.jpg" class="slide" alt="Kenangan 3">
+            </div>
+
+            <h2 class="section-title">Galeri Kenangan</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openModal('foto4.jpg', 'Momen lucu waktu kita kesini bareng ❤️')">
+                    <img src="foto4.jpg" alt="Gallery 1">
+                </div>
+                <div class="gallery-item" onclick="openModal('foto5.jpg', 'Senyum kamu yang selalu aku suka 😊')">
+                    <img src="foto5.jpg" alt="Gallery 2">
+                </div>
+                <div class="gallery-item" onclick="openModal('foto6.jpg', 'Hari yang nggak akan pernah aku lupa ✨')">
+                    <img src="foto6.jpg" alt="Gallery 3">
+                </div>
+                <div class="gallery-item" onclick="openModal('foto7.jpg', 'Terima kasih udah selalu ada 💖')">
+                    <img src="foto7.jpg" alt="Gallery 4">
+                </div>
+            </div>
+
+            <button id="secretBtn" class="btn btn-outline">Buka Pesan Rahasia 💌</button>
+        </div>
+    </section>
+
+    <section id="closing" class="screen">
+        <div class="stars"></div>
+        <h1 class="closing-text">Happy Birthday sekali lagi ✨<br>I love you.</h1>
+    </section>
+
+    <div id="imageModal" class="modal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImg">
+        <div id="modalCaption"></div>
+    </div>
+
+    <div id="secretModal" class="modal">
+        <span class="close-btn" onclick="closeSecret()">&times;</span>
+        <div class="envelope-content">
+            <h2>Untuk Kamu yang Spesial,</h2>
+            <p>Di hari ulang tahunmu ini, aku cuma mau bilang... (Tulis pesan panjangmu di sini. Ungkapkan semua perasaanmu agar dia terharu membaca ini). Selamat bertambah usia, semoga kita bisa terus bikin kenangan bareng-bareng ya.</p>
+            <button id="toClosingBtn" class="btn">Lanjut ✨</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
