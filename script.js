@@ -278,6 +278,13 @@ function closeModal() {
       imageModal.classList.remove('active');
 }
 
+// Close modal when clicking background
+imageModal.addEventListener('click', (e) => {
+      if (e.target === imageModal) {
+            closeModal();
+      }
+});
+
 // 4. Misc Logic
 // Close modals on Esc key
 window.addEventListener('keydown', (e) => {

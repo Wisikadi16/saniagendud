@@ -813,21 +813,135 @@ body {
       }
 }
 
-/* Responsive */
-@media (max-width: 600px) {
+/* Responsive Optimization */
+@media (max-width: 768px) {
+      body {
+            font-size: 1.1rem;
+      }
+
+      .game-container {
+            padding: 10px;
+      }
+
+      .pixel-box {
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow:
+                  4px 0 0 0 var(--pink-dark),
+                  -4px 0 0 0 var(--pink-dark),
+                  0 4px 0 0 var(--pink-dark),
+                  0 -4px 0 0 var(--pink-dark);
+      }
+
+      .main-title h1 {
+            font-size: 1.2rem;
+            line-height: 1.4;
+      }
+
+      .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+      }
+
       .pixel-grid {
             grid-template-columns: 1fr;
+            gap: 25px;
+            max-width: 100%;
+      }
+
+      .gallery-card {
+            padding: 10px;
+      }
+
+      .gallery-card img {
+            height: 250px;
+      }
+
+      .relationship-timer {
+            padding: 20px 15px;
+            margin: 30px 0;
+      }
+
+      .timer-title {
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+      }
+
+      .timer-numbers {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            text-shadow: 2px 2px var(--pink-dark);
+      }
+
+      .modal-content {
+            width: 100%;
+            padding: 10px;
+      }
+
+      .modal-content img {
+            max-height: 300px;
+            margin-bottom: 15px;
+      }
+
+      #modalCaption {
+            font-size: 1.1rem;
+            padding: 15px;
+            max-height: 200px;
+      }
+
+      .cake-container {
+            transform: scale(0.8);
+            margin: 20px auto;
       }
 
       .congrats-text {
             font-size: 1rem;
       }
 
-      .main-title h1 {
-            font-size: 1.2rem;
+      .pixel-card {
+            padding: 20px 10px;
       }
 
-      body {
+      .stat-box {
+            padding: 10px;
+            width: 100%;
+      }
+
+      .secret-text {
             font-size: 1.2rem;
+            max-height: 300px;
+            line-height: 1.6;
+      }
+
+      .retro-btn {
+            font-size: 0.8rem;
+            padding: 12px 20px;
+      }
+
+      .pixel-character {
+            bottom: 5%;
+            transform: scale(0.6);
+      }
+
+      .close-btn {
+            top: 5px;
+            right: 10px;
+            font-size: 50px;
+            /* Lebih besar biar gampang dipencet */
+            padding: 15px;
+            /* Nambah area sentuh biar ramah jari */
+            line-height: 1;
+            z-index: 1100;
+      }
+}
+
+/* Extra Small Devices */
+@media (max-width: 400px) {
+      .timer-numbers {
+            font-size: 0.75rem;
+      }
+
+      .main-title h1 {
+            font-size: 1rem;
       }
 }
