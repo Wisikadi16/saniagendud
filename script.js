@@ -1,126 +1,111 @@
-// Data Teks Typewriter
-const ucapan = "Selamat ulang tahun ya! Terima kasih sudah jadi orang yang luar biasa. Semoga hari ini seindah senyummu, dan tahun ini bawa banyak kebahagiaan buat kamu. Ada banyak hal yang pengen aku sampein, tapi biarkan halaman ini yang bercerita...";
-let i = 0;
-const speed = 50; // Kecepatan ketik (ms)
+// 1. Intersection Observer for Scroll Reveals
+const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+};
 
-// Elemen DOM
-const openBtn = document.getElementById('openBtn');
-const openingScreen = document.getElementById('opening');
-const mainScreen = document.getElementById('main');
-const closingScreen = document.getElementById('closing');
+const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                  entry.target.classList.add('active');
+
+                  // Trigger specific animations based on section ID
+                  if (entry.target.id === 'birthday-wish') {
+                        fireSubtleConfetti();
+                  }
+            }
+      });
+}, observerOptions);
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// 2. Audio & Start Button
 const bgMusic = document.getElementById('bgMusic');
-const typewriterText = document.getElementById('typewriter-text');
+const startBtn = document.getElementById('startBtn');
 
-// 1. Event Buka Hadiah
-openBtn.addEventListener('click', () => {
-    // Memutar musik
-    bgMusic.play();
-
-    // Transisi Layar
-    openingScreen.classList.remove('active');
-    setTimeout(() => {
-        openingScreen.style.display = 'none';
-        mainScreen.style.display = 'flex';
-        // Memberi sedikit waktu sebelum fade in
-        setTimeout(() => {
-            mainScreen.classList.add('active');
-            fireConfetti();
-            typeWriter();
-            startSlideshow();
-        }, 100);
-    }, 1500);
+startBtn.addEventListener('click', () => {
+      bgMusic.play();
+      document.getElementById('birthday-wish').scrollIntoView({ behavior: 'smooth' });
 });
 
-// 2. Efek Confetti (Menggunakan Canvas-Confetti)
-function fireConfetti() {
-    var duration = 3000;
-    var end = Date.now() + duration;
+// 3. Subtle Confetti
+function fireSubtleConfetti() {
+      const end = Date.now() + 1000;
+      const colors = ['#d63031', '#fab1a0', '#ffeaa7'];
 
-    (function frame() {
-        confetti({
-            particleCount: 5,
-            angle: 60,
-            spread: 55,
-            origin: { x: 0 },
-            colors: ['#e5989b', '#b5838d', '#ffcdb2']
-        });
-        confetti({
-            particleCount: 5,
-            angle: 120,
-            spread: 55,
-            origin: { x: 1 },
-            colors: ['#e5989b', '#b5838d', '#ffcdb2']
-        });
+      (function frame() {
+            confetti({
+                  particleCount: 2,
+                  angle: 60,
+                  spread: 55,
+                  origin: { x: 0, y: 0.8 },
+                  colors: colors,
+                  scalar: 0.8
+            });
+            confetti({
+                  particleCount: 2,
+                  angle: 120,
+                  spread: 55,
+                  origin: { x: 1, y: 0.8 },
+                  colors: colors,
+                  scalar: 0.8
+            });
 
-        if (Date.now() < end) {
-            requestAnimationFrame(frame);
-        }
-    }());
+            if (Date.now() < end) {
+                  requestAnimationFrame(frame);
+            }
+      }());
 }
 
-// 3. Animasi Typewriter
-function typeWriter() {
-    if (i < ucapan.length) {
-        typewriterText.innerHTML += ucapan.charAt(i);
-        i++;
-        setTimeout(typeWriter, speed);
-    } else {
-        // Tambahkan cursor berkedip di akhir
-        typewriterText.innerHTML += '<span class="cursor"></span>';
-    }
-}
-
-// 4. Slideshow Otomatis
+// 4. Slideshow
 let slideIndex = 0;
 function startSlideshow() {
-    const slides = document.querySelectorAll('.slide');
-    if(slides.length === 0) return;
-    
-    setInterval(() => {
-        slides[slideIndex].classList.remove('active');
-        slideIndex = (slideIndex + 1) % slides.length;
-        slides[slideIndex].classList.add('active');
-    }, 3000); // Ganti foto setiap 3 detik
-}
+      const slides = document.querySelectorAll('.slide');
+      if (slides.length === 0) return;
 
-// 5. Galeri Popup
+      setInterval(() => {
+            slides[slideIndex].classList.remove('active');
+            slideIndex = (slideIndex + 1) % slides.length;
+            slides[slideIndex].classList.add('active');
+      }, 4000);
+}
+startSlideshow();
+
+// 5. Image Modal
 const imageModal = document.getElementById('imageModal');
 const modalImg = document.getElementById('modalImg');
 const modalCaption = document.getElementById('modalCaption');
 
-function openModal(imageSrc, caption) {
-    imageModal.style.display = "flex";
-    modalImg.src = imageSrc;
-    modalCaption.innerHTML = caption;
+function openModal(src, caption) {
+      imageModal.classList.add('active');
+      modalImg.src = src;
+      modalCaption.textContent = caption;
+      document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
-    imageModal.style.display = "none";
+      imageModal.classList.remove('active');
+      document.body.style.overflow = 'auto';
 }
 
-// 6. Pesan Rahasia & Transisi Penutup
-const secretBtn = document.getElementById('secretBtn');
+// 6. Secret Message Modal
 const secretModal = document.getElementById('secretModal');
-const toClosingBtn = document.getElementById('toClosingBtn');
+const viewSecretBtn = document.getElementById('viewSecretBtn');
 
-secretBtn.addEventListener('click', () => {
-    secretModal.style.display = "flex";
+viewSecretBtn.addEventListener('click', () => {
+      secretModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
 });
 
 function closeSecret() {
-    secretModal.style.display = "none";
+      secretModal.classList.remove('active');
+      document.body.style.overflow = 'auto';
 }
 
-// Transisi ke Layar Penutup
-toClosingBtn.addEventListener('click', () => {
-    closeSecret();
-    mainScreen.classList.remove('active');
-    
-    setTimeout(() => {
-        mainScreen.style.display = 'none';
-        closingScreen.style.display = 'flex';
-        setTimeout(() => {
-            closingScreen.classList.add('active');
-        }, 100);
-    }, 1500);
+// Close modals on Esc key
+window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+            closeModal();
+            closeSecret();
+      }
 });

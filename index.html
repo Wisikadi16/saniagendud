@@ -1,81 +1,114 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Untuk Kamu ✨</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Untuk Kamu ✨</title>
+      <link rel="stylesheet" href="style.css">
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+            rel="stylesheet">
+      <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
+
 <body>
 
-    <audio id="bgMusic" loop>
-        <source src="lagu-romantis.mp3" type="audio/mpeg">
-    </audio>
+      <audio id="bgMusic" loop>
+            <source src="lagu-romantis.mp3" type="audio/mpeg">
+      </audio>
 
-    <section id="opening" class="screen active">
-        <h1 class="mysterious-text">Aku punya sesuatu untuk kamu...</h1>
-        <button id="openBtn" class="btn">Buka Hadiahnya 🎁</button>
-    </section>
+      <div class="background-elements">
+            <div class="gradient-sphere"></div>
+            <div class="gradient-sphere secondary"></div>
+      </div>
 
-    <section id="main" class="screen">
-        <div class="balloons-container" id="balloons"></div>
+      <main class="container">
+            <section id="hero" class="reveal">
+                  <h1 class="hero-title">Ada sesuatu yang ingin<br>aku sampaikan...</h1>
+                  <p class="hero-subtitle">Scroll pelan-pelan ya ✨</p>
+                  <button id="startBtn" class="btn-primary">Mulai Cerita 🎁</button>
+            </section>
 
-        <div class="content-wrapper">
-            <h1 class="bday-title">Happy Birthday,<br><span class="name">[Nama Pasangan/Spesial]</span></h1>
-            
-            <div class="message-box">
-                <p id="typewriter-text"></p>
+            <section id="birthday-wish" class="reveal">
+                  <div class="glass-card">
+                        <h2 class="wish-title">Happy Birthday,<br><span class="highlight">Sania</span></h2>
+                        <div class="message-content">
+                              <p id="main-message">Selamat ulang tahun ya! Terima kasih sudah jadi orang yang luar biasa
+                                    bagi aku.</p>
+                        </div>
+                  </div>
+            </section>
+
+            <section id="memories" class="reveal">
+                  <h3 class="section-label">Kenangan Kita</h3>
+                  <div class="slideshow-wrapper">
+                        <img src="foto1.jpg" class="slide active" alt="Kenangan 1">
+                        <img src="foto2.jpg" class="slide" alt="Kenangan 2">
+                        <img src="foto3.jpg" class="slide" alt="Kenangan 3">
+                  </div>
+            </section>
+
+            <section id="gallery" class="reveal">
+                  <h3 class="section-label">Galeri Kebahagiaan</h3>
+                  <div class="gallery-layout">
+                        <div class="gallery-card"
+                              onclick="openModal('foto4.jpg', 'Senyum yang selalu buat hari aku lebih cerah.')">
+                              <img src="foto4.jpg" alt="Memory 1">
+                        </div>
+                        <div class="gallery-card"
+                              onclick="openModal('foto5.jpg', 'Waktu itu, dunia terasa milik kita berdua.')">
+                              <img src="foto5.jpg" alt="Memory 2">
+                        </div>
+                        <div class="gallery-card"
+                              onclick="openModal('foto6.jpg', 'Setiap detik bersamamu adalah hadiah.')">
+                              <img src="foto6.jpg" alt="Memory 3">
+                        </div>
+                        <div class="gallery-card"
+                              onclick="openModal('foto7.jpg', 'Terima kasih sudah memilih jalan ini bersamaku.')">
+                              <img src="foto7.jpg" alt="Memory 4">
+                        </div>
+                  </div>
+            </section>
+
+            <section id="secret" class="reveal">
+                  <div class="glass-card">
+                        <h3 class="section-label">Pesan Dari Hatiku</h3>
+                        <p class="secret-hint">Ada satu hal kecil lagi...</p>
+                        <button id="viewSecretBtn" class="btn-outline">Buka Pesan Tersembunyi 💌</button>
+                  </div>
+            </section>
+
+            <footer id="footer" class="reveal">
+                  <p class="footer-text">Selamat ulang tahun sekali lagi ✨</p>
+                  <p class="footer-subtext">I Love You so much.</p>
+            </footer>
+      </main>
+
+      <!-- Modals -->
+      <div id="imageModal" class="modal">
+            <div class="modal-overlay" onclick="closeModal()"></div>
+            <div class="modal-container">
+                  <img id="modalImg" src="" alt="Zoomed">
+                  <p id="modalCaption"></p>
             </div>
+      </div>
 
-            <h2 class="section-title">Memori Kita berjalan...</h2>
-            <div class="slideshow-container">
-                <img src="foto1.jpg" class="slide active" alt="Kenangan 1">
-                <img src="foto2.jpg" class="slide" alt="Kenangan 2">
-                <img src="foto3.jpg" class="slide" alt="Kenangan 3">
+      <div id="secretModal" class="modal">
+            <div class="modal-overlay" onclick="closeSecret()"></div>
+            <div class="modal-container glass-card">
+                  <h2>Hanya Untukmu,</h2>
+                  <div class="scroll-text">
+                        <p>Di hari spesialmu ini, aku ingin kamu tahu betapa berartinya kehadiranmu dalam hidupku.
+                              Terima kasih buat semua tawa, dukungan, dan kasih sayang yang kamu kasih selama ini.</p>
+                        <p>Semoga di umur yang baru ini, kamu semakin bahagia, sehat selalu, dan semua impianmu
+                              tercapai. Aku akan selalu ada di sini buat dukung kamu.</p>
+                        <p>Selamat bertambah usia, sayang. ✨</p>
+                  </div>
+                  <button class="btn-primary" onclick="closeSecret()">Tutup 💖</button>
             </div>
+      </div>
 
-            <h2 class="section-title">Galeri Kenangan</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item" onclick="openModal('foto4.jpg', 'Momen lucu waktu kita kesini bareng ❤️')">
-                    <img src="foto4.jpg" alt="Gallery 1">
-                </div>
-                <div class="gallery-item" onclick="openModal('foto5.jpg', 'Senyum kamu yang selalu aku suka 😊')">
-                    <img src="foto5.jpg" alt="Gallery 2">
-                </div>
-                <div class="gallery-item" onclick="openModal('foto6.jpg', 'Hari yang nggak akan pernah aku lupa ✨')">
-                    <img src="foto6.jpg" alt="Gallery 3">
-                </div>
-                <div class="gallery-item" onclick="openModal('foto7.jpg', 'Terima kasih udah selalu ada 💖')">
-                    <img src="foto7.jpg" alt="Gallery 4">
-                </div>
-            </div>
-
-            <button id="secretBtn" class="btn btn-outline">Buka Pesan Rahasia 💌</button>
-        </div>
-    </section>
-
-    <section id="closing" class="screen">
-        <div class="stars"></div>
-        <h1 class="closing-text">Happy Birthday sekali lagi ✨<br>I love you.</h1>
-    </section>
-
-    <div id="imageModal" class="modal">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImg">
-        <div id="modalCaption"></div>
-    </div>
-
-    <div id="secretModal" class="modal">
-        <span class="close-btn" onclick="closeSecret()">&times;</span>
-        <div class="envelope-content">
-            <h2>Untuk Kamu yang Spesial,</h2>
-            <p>Di hari ulang tahunmu ini, aku cuma mau bilang... (Tulis pesan panjangmu di sini. Ungkapkan semua perasaanmu agar dia terharu membaca ini). Selamat bertambah usia, semoga kita bisa terus bikin kenangan bareng-bareng ya.</p>
-            <button id="toClosingBtn" class="btn">Lanjut ✨</button>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+      <script src="script.js"></script>
 </body>
+
 </html>
