@@ -820,12 +820,14 @@ body {
       }
 
       .game-container {
-            padding: 10px;
+            padding: 20px 15px;
+            /* Tambah ruang di samping */
       }
 
       .pixel-box {
-            padding: 15px;
-            margin: 20px 0;
+            padding: 20px 15px;
+            margin: 30px 10px;
+            /* Jarak atas bawah lebih lega, beri jarak dari tepi layar */
             box-shadow:
                   4px 0 0 0 var(--pink-dark),
                   -4px 0 0 0 var(--pink-dark),
@@ -873,20 +875,29 @@ body {
             text-shadow: 2px 2px var(--pink-dark);
       }
 
+      .modal {
+            padding: 15px;
+            /* Sedikit padding luar */
+      }
+
       .modal-content {
-            width: 100%;
+            width: 92%;
+            /* Beri celah di kiri kanan biar nggak rapat banget */
+            max-width: 450px;
             padding: 10px;
       }
 
       .modal-content img {
-            max-height: 300px;
-            margin-bottom: 15px;
+            max-height: 350px;
+            /* Sesuaikan biar proporsional */
+            margin-bottom: 20px;
       }
 
       #modalCaption {
             font-size: 1.1rem;
-            padding: 15px;
-            max-height: 200px;
+            padding: 20px;
+            max-height: 250px;
+            width: 100%;
       }
 
       .cake-container {
