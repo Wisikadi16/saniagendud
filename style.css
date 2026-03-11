@@ -725,59 +725,67 @@ body {
       color: var(--white);
 }
 
-/* Character Animation */
+/* Character Animation - Simple Floating Heart */
 .pixel-character {
       position: fixed;
-      bottom: 15%;
-      left: -50px;
-      width: 40px;
-      height: 40px;
-      background: var(--pink-main);
-      /* Placeholder pixel art */
-      border: 4px solid var(--white);
-      box-shadow: 4px 4px 0 var(--pink-dark);
+      bottom: 12%;
+      left: -100px;
+      width: 20px;
+      height: 20px;
+      background-color: var(--pink-main);
+      transform: rotate(-45deg);
       z-index: -1;
-      animation: charWalk 25s linear infinite;
+      animation: charWalk 20s linear infinite;
       pointer-events: none;
+      box-shadow: none;
+      border: none;
+      border-radius: 0;
 }
 
-/* Simple pixel head shape */
-.pixel-character::before {
-      content: '';
+.pixel-character::before,
+.pixel-character::after {
+      content: "";
       position: absolute;
-      top: -12px;
-      left: 6px;
       width: 20px;
-      height: 12px;
-      background: var(--pink-main);
-      border: 4px solid var(--white);
-      border-bottom: none;
+      height: 20px;
+      background-color: var(--pink-main);
+      border-radius: 50%;
+}
+
+.pixel-character::before {
+      top: -10px;
+      left: 0;
+}
+
+.pixel-character::after {
+      top: 0;
+      left: 10px;
 }
 
 @keyframes charWalk {
       0% {
             left: -100px;
-            transform: scaleX(1);
+            transform: scaleX(1) rotate(-45deg);
       }
 
       45% {
             left: 110vw;
-            transform: scaleX(1);
+            transform: scaleX(1) rotate(-45deg);
       }
 
       50% {
             left: 110vw;
-            transform: scaleX(-1);
+            transform: scaleX(-1) rotate(-45deg);
       }
 
       95% {
             left: -100px;
-            transform: scaleX(-1);
+            transform: scaleX(-1) rotate(-45deg);
       }
 
       100% {
             left: -100px;
-            transform: scaleX(1);
+            transform: scaleX(1) rotate(-45deg);
       }
 }
 
@@ -813,146 +821,156 @@ body {
       }
 }
 
-/* Responsive Optimization */
+/* Extreme Mobile Optimization (Native HP Feel) */
 @media (max-width: 768px) {
       body {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            /* Standar HP */
       }
 
       .game-container {
-            padding: 20px 15px;
-            /* Tambah ruang di samping */
+            padding: 15px 10px;
       }
 
       .pixel-box {
-            padding: 20px 15px;
-            margin: 30px 10px;
-            /* Jarak atas bawah lebih lega, beri jarak dari tepi layar */
+            padding: 15px 12px;
+            margin: 20px 5px;
             box-shadow:
                   4px 0 0 0 var(--pink-dark),
                   -4px 0 0 0 var(--pink-dark),
                   0 4px 0 0 var(--pink-dark),
                   0 -4px 0 0 var(--pink-dark);
+            width: calc(100% - 10px);
+            /* Beri sedikit nafas dari tepi */
+            margin-left: auto;
+            margin-right: auto;
       }
 
       .main-title h1 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             line-height: 1.4;
+            letter-spacing: 0;
       }
 
       .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+      }
+
+      .btn-group {
+            flex-direction: column;
+            /* Tumpuk tombol ke bawah di HP */
+            gap: 12px;
+            padding: 0 10px;
+      }
+
+      .retro-btn {
+            width: 100%;
+            /* Tombol lebar penuh biar gampang dipencet */
+            padding: 12px 10px;
+            font-size: 0.8rem;
       }
 
       .pixel-grid {
             grid-template-columns: 1fr;
-            gap: 25px;
-            max-width: 100%;
+            gap: 20px;
+            padding: 0 5px;
       }
 
       .gallery-card {
-            padding: 10px;
+            padding: 8px;
+            border-width: 4px;
       }
 
       .gallery-card img {
-            height: 250px;
+            height: 220px;
       }
 
       .relationship-timer {
-            padding: 20px 15px;
-            margin: 30px 0;
+            padding: 15px 10px;
+            width: 95%;
+            margin: 20px auto;
+            box-shadow: 6px 6px 0 var(--pink-dark);
       }
 
       .timer-title {
-            font-size: 0.8rem;
-            margin-bottom: 15px;
-      }
-
-      .timer-numbers {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            text-shadow: 2px 2px var(--pink-dark);
-      }
-
-      .modal {
-            padding: 15px;
-            /* Sedikit padding luar */
-      }
-
-      .modal-content {
-            width: 92%;
-            /* Beri celah di kiri kanan biar nggak rapat banget */
-            max-width: 450px;
-            padding: 10px;
-      }
-
-      .modal-content img {
-            max-height: 350px;
-            /* Sesuaikan biar proporsional */
-            margin-bottom: 20px;
-      }
-
-      #modalCaption {
-            font-size: 1.1rem;
-            padding: 20px;
-            max-height: 250px;
-            width: 100%;
-      }
-
-      .cake-container {
-            transform: scale(0.8);
-            margin: 20px auto;
-      }
-
-      .congrats-text {
-            font-size: 1rem;
-      }
-
-      .pixel-card {
-            padding: 20px 10px;
-      }
-
-      .stat-box {
-            padding: 10px;
-            width: 100%;
-      }
-
-      .secret-text {
-            font-size: 1.2rem;
-            max-height: 300px;
-            line-height: 1.6;
-      }
-
-      .retro-btn {
-            font-size: 0.8rem;
-            padding: 12px 20px;
-      }
-
-      .pixel-character {
-            bottom: 5%;
-            transform: scale(0.6);
-      }
-
-      .close-btn {
-            top: 5px;
-            right: 10px;
-            font-size: 50px;
-            /* Lebih besar biar gampang dipencet */
-            padding: 15px;
-            /* Nambah area sentuh biar ramah jari */
-            line-height: 1;
-            z-index: 1100;
-      }
-}
-
-/* Extra Small Devices */
-@media (max-width: 400px) {
-      .timer-numbers {
             font-size: 0.75rem;
       }
 
-      .main-title h1 {
+      .timer-numbers {
+            font-size: 0.85rem;
+            line-height: 1.5;
+      }
+
+      .modal {
+            padding: 10px;
+      }
+
+      .modal-content {
+            width: 96%;
+            max-width: none;
+            padding: 5px;
+            border: none;
+      }
+
+      .modal-content img {
+            max-height: 300px;
+            margin-bottom: 10px;
+            border-width: 3px;
+      }
+
+      #modalCaption {
             font-size: 1rem;
+            padding: 15px;
+            max-height: 220px;
+            border-width: 3px;
+      }
+
+      .close-btn {
+            top: 2px;
+            right: 8px;
+            font-size: 45px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            /* Overlay biar X keliatan */
+            border-radius: 5px;
+      }
+
+      .cake-container {
+            transform: scale(0.7);
+            margin: 10px auto;
+      }
+
+      .secret-text {
+            font-size: 1rem;
+            max-height: 280px;
+            line-height: 1.5;
+            padding-right: 10px;
+      }
+
+      .pixel-character {
+            bottom: 3%;
+            transform: scale(0.5);
+      }
+
+      /* Matikan efek grid yang berat di HP biar gak pusing */
+      .pixel-background::after {
+            background-size: 30px 30px;
+            opacity: 0.3;
+      }
+}
+
+/* Very Small Screen (iPhone SE, etc) */
+@media (max-width: 360px) {
+      .timer-numbers {
+            font-size: 0.7rem;
+      }
+
+      .main-title h1 {
+            font-size: 0.95rem;
+      }
+
+      .retro-btn {
+            font-size: 0.7rem;
       }
 }
